@@ -8,17 +8,16 @@ services:
     build:
       context: ./node
     container_name: app
-    entrypoint: dockerize -wait tcp://db:3306 -timeout 600s docker-entrypoint.sh
-    networks:
-      - node-network
     volumes:
       - ./node:/usr/src/app
     tty: true
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+    networks:
+      - node-network
     ports:
       - "3000"
-    command: ["npm", "install", "node", "index,js"]
 
   db:
     image: mysql:5.7
@@ -33,6 +32,11 @@ services:
       - MYSQL_ROOT_PASSWORD=root
     networks:
       - node-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   nginx:
     build:
