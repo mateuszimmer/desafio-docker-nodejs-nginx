@@ -18,6 +18,7 @@ services:
       - node-network
     ports:
       - "3000"
+    restart: always
 
   db:
     image: mysql:5.7
