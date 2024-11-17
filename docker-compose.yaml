@@ -19,6 +19,7 @@ services:
     ports:
       - "3000"
     entrypoint: npm install -y node index.js
+    command: ["node", "index.js"]
 
   db:
     image: mysql:5.7
