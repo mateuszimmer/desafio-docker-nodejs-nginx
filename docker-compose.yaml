@@ -18,6 +18,7 @@ services:
       - node-network
     ports:
       - "3000"
+    command: node index.js
     restart: always
 
   db:
