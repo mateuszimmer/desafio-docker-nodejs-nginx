@@ -18,8 +18,8 @@ services:
       - node-network
     ports:
       - "3000"
+    entrypoint: npm install
     command: node index.js
-    restart: always
 
   db:
     image: mysql:5.7
