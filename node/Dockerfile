@@ -2,10 +2,6 @@ FROM node:lts-jod
 
 WORKDIR /usr/src/app
 
-COPY package*.json .
-
-RUN npm install
-
 COPY . .
 
 ENV DOCKERIZE_VERSION v0.8.0

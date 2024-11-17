@@ -18,7 +18,7 @@ services:
       - db
     ports:
       - "3000"
-    command: ['node', 'index.js']
+    command: ["npm", "install", "node", "index,js"]
 
   db:
     image: mysql:5.7
