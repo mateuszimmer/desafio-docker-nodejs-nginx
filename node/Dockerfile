@@ -4,6 +4,7 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN npm install -i
+RUN nom install express -y
+RUN npm install
 
 COPY . .
