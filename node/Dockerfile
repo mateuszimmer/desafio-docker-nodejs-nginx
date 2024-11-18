@@ -1,3 +1,3 @@
-FROM node:last
+FROM node
 WORKDIR /usr/src/app
 EXPOSE 3000
