@@ -11,6 +11,7 @@ services:
     volumes:
       - ./node:/usr/src/app
     tty: true
+    command: ["node", "index.js"]
     depends_on:
       db:
         condition: service_healthy
@@ -18,7 +19,6 @@ services:
       - node-network
     ports:
       - "3000"
-    command: node index.js
 
   db:
     image: mysql:5.7
