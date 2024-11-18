@@ -18,7 +18,6 @@ services:
       - node-network
     ports:
       - "3000"
-    entrypoint: npm install -y
     command: node index.js
 
   db:
