@@ -1,12 +1,5 @@
-FROM node:lts-jod
-
+FROM node:15
 WORKDIR /usr/src/app
-
-COPY package*.json ./
-
-RUN npm install express -y
-RUN npm install
-
 COPY . .
-
+RUN npm install
 CMD [ "node", "index.js" ]
