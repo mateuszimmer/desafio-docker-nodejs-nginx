@@ -16,8 +16,6 @@ services:
         condition: service_healthy
     networks:
       - node-network
-    ports:
-      - "3000"
 
   db:
     build: 
@@ -31,9 +29,9 @@ services:
       - node-network
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+      interval: 5s
+      timeout: 10s
+      retries: 12
 
   nginx:
     build:
