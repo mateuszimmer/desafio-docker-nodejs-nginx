@@ -18,19 +18,15 @@ services:
       - node-network
     ports:
       - "3000"
-    entrypoint: sh -c "npm install && node index.js"
 
   db:
-    image: mysql:5.7
-    command: --innodb-use-native-aio=0
+    build: 
+      context: ./mysql
     container_name: db
     restart: always
     tty: true
     volumes:
-      - ./mysql:/var/lib/mysql
-    environment:
-      - MYSQL_DATABASE=nodedb
-      - MYSQL_ROOT_PASSWORD=root
+      - ./mysql/db:/var/lib/mysql
     networks:
       - node-network
     healthcheck:
@@ -52,4 +48,3 @@ services:
         condition: service_started
     volumes:
       - ./nginx:/etc/nginx/conf.db
-    command: /bin/sh -c "exec nginx -g 'daemon off;'"
